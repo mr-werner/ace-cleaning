@@ -98,15 +98,45 @@ a {
 }
 
 .brand-mark {
-  display: grid;
-  place-items: center;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: var(--navy);
-  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 64px;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+.spade-logo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.spade-shape {
+  fill: var(--navy);
+}
+
+.spade-text {
+  fill: white;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: 21px;
   font-weight: 900;
-  letter-spacing: -1px;
+  letter-spacing: 1px;
+}
+
+.footer-brand .spade-shape {
+  fill: white;
+}
+
+.footer-brand .spade-text {
+  fill: var(--navy);
 }
 
 .brand-copy {
@@ -714,11 +744,6 @@ a {
   gap: 30px;
 }
 
-.footer-brand .brand-mark {
-  background: white;
-  color: var(--navy);
-}
-
 .footer-brand .brand-copy strong {
   color: white;
 }
@@ -916,9 +941,12 @@ a {
   }
 
   .brand-mark {
-    width: 43px;
-    height: 43px;
-    font-size: 14px;
+    width: 46px;
+    height: 55px;
+  }
+
+  .spade-text {
+    font-size: 20px;
   }
 
   .brand-copy strong {
