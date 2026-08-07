@@ -25,30 +25,32 @@ function SpadeLogo() {
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
+      {/* Spade */}
       <path
         className="spade-shape"
         d="
-          M50 3
-          C42 17 31 29 20 40
-          C8 53 3 66 7 79
-          C11 92 21 99 33 99
-          C40 99 46 96 50 90
-          C50 101 47 109 39 117
-          H61
-          C53 109 50 101 50 90
-          C54 96 60 99 67 99
-          C79 99 89 92 93 79
-          C97 66 92 53 80 40
-          C69 29 58 17 50 3
-          Z
-        "
+          M50 6
+          C42 18 32 29 22 40
+          C10 53 5 65 8 78
+          C11 91 22 99 34 99
+          C41 99 47 95 50 88
+          C50 99 47 108 41 116
+          H59
+          C53 108 50 99 50 88
+          C53 95 59 99 66 99
+          C78 99 89 91 92 78
+          C95 65 90 53 78 40
+          C68 29 58 18 50 6
+          Z"
       />
 
+      {/* ACE text */}
       <text
         className="spade-text"
         x="50"
-        y="70"
+        y="67"
         textAnchor="middle"
+        dominantBaseline="middle"
       >
         ACE
       </text>
