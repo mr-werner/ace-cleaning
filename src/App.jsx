@@ -147,7 +147,7 @@ function Hero({ onQuote }) {
   )
 }
 
-function Services() {
+function Services({ onQuote }) {
   return (
     <section className="section" id="services">
       <div className="container">
@@ -716,7 +716,7 @@ export default function App() {
     <>
       <Header onQuote={() => setQuoteOpen(true)} />
       <Hero onQuote={() => setQuoteOpen(true)} />
-      <Services />
+      <Services onQuote={() => setQuoteOpen(true)} />
       <About onQuote={() => setQuoteOpen(true)} />
       <Difference />
       <Pricing onQuote={() => setQuoteOpen(true)} />
