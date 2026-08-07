@@ -17,32 +17,41 @@ import { offers, services } from './data/siteData'
 const phoneDisplay = '(785) 842-3200'
 const phoneHref = 'tel:+17858423200'
 
-function SpadeLogo({ className = '' }) {
+function SpadeLogo() {
   return (
     <svg
-      className={`spade-logo ${className}`}
+      className="spade-logo"
       viewBox="0 0 100 120"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
       <path
-        fill="currentColor"
+        className="spade-shape"
         d="
-          M50 4
-          C42 18 31 29 21 40
-          C9 53 4 66 7 79
-          C10 92 20 99 32 99
-          C39 99 45 96 50 90
-          C50 101 47 108 40 116
-          H60
-          C53 108 50 101 50 90
-          C55 96 61 99 68 99
-          C80 99 90 92 93 79
-          C96 66 91 53 79 40
-          C69 29 58 18 50 4
+          M50 3
+          C42 17 31 29 20 40
+          C8 53 3 66 7 79
+          C11 92 21 99 33 99
+          C40 99 46 96 50 90
+          C50 101 47 109 39 117
+          H61
+          C53 109 50 101 50 90
+          C54 96 60 99 67 99
+          C79 99 89 92 93 79
+          C97 66 92 53 80 40
+          C69 29 58 17 50 3
           Z
         "
       />
+
+      <text
+        className="spade-text"
+        x="50"
+        y="70"
+        textAnchor="middle"
+      >
+        ACE
+      </text>
     </svg>
   )
 }
