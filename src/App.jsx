@@ -17,6 +17,36 @@ import { offers, services } from './data/siteData'
 const phoneDisplay = '(785) 842-3200'
 const phoneHref = 'tel:+17858423200'
 
+function SpadeLogo({ className = '' }) {
+  return (
+    <svg
+      className={`spade-logo ${className}`}
+      viewBox="0 0 100 120"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        fill="currentColor"
+        d="
+          M50 4
+          C42 18 31 29 21 40
+          C9 53 4 66 7 79
+          C10 92 20 99 32 99
+          C39 99 45 96 50 90
+          C50 101 47 108 40 116
+          H60
+          C53 108 50 101 50 90
+          C55 96 61 99 68 99
+          C80 99 90 92 93 79
+          C96 66 91 53 79 40
+          C69 29 58 18 50 4
+          Z
+        "
+      />
+    </svg>
+  )
+}
+
 function SectionHeading({ eyebrow, title, copy, align = 'left' }) {
   const centered = align === 'center'
   return (
@@ -47,7 +77,9 @@ function Header({ onQuote }) {
 
       <div className="container nav-wrap">
         <button className="brand" onClick={() => closeAndScroll('home')} aria-label="Ace Cleaning home">
-          <span className="brand-mark">ACE</span>
+          <span className="brand-mark">
+            <SpadeLogo />
+          </span>
           <span className="brand-copy">
             <strong>Cleaning</strong>
             <small>Lawrence, Kansas</small>
@@ -130,7 +162,7 @@ function Services() {
               <div className="icon-box"><Icon size={26} /></div>
               <h3>{title}</h3>
               <p>{description}</p>
-              <button>Learn more <ArrowRight size={16} /></button>
+              <button onClick={onQuote}>Request Service <ArrowRight size={16} /></button>
             </article>
           ))}
         </div>
@@ -385,7 +417,10 @@ function Footer({ onQuote }) {
       </div>
       <div className="container footer-bottom">
         <div className="brand footer-brand">
-          <span className="brand-mark">ACE</span>
+          <span className="brand-mark">
+            <SpadeLogo />
+
+          </span>
           <span className="brand-copy"><strong>Cleaning</strong><small>Lawrence, Kansas</small></span>
         </div>
         <p>© {new Date().getFullYear()} Ace Cleaning. All rights reserved.</p>
