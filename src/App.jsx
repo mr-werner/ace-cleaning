@@ -773,7 +773,7 @@ function Review({ onQuote }) {
       setSubmitting(true);
 
       const response = await fetch(
-        "https://blueprintwebstudio.com/api/demo-interest",
+        "blueprintwebstudio.com/api/demo-interest",
         {
           method: "POST",
           headers: {
@@ -833,7 +833,7 @@ function Review({ onQuote }) {
           {!timeLeft.expired ? (
             <>
               <div className="concept-review-program">
-                Partner Program Eligibility
+                Partner Program - Discount Eligibility
               </div>
 
               <div className="concept-review-reserved">
