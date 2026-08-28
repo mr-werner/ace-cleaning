@@ -1312,7 +1312,10 @@ a {
   z-index: 9999;
 
   padding: 10px 14px;
-  max-width: 280px;
+
+  /* Allow the title to stay on one line */
+  width: max-content;
+  max-width: calc(100vw - 40px);
 
   background: rgba(20, 20, 20, 0.82);
   border: 1px solid rgba(255, 255, 255, 0.16);
@@ -1335,6 +1338,9 @@ a {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   line-height: 1.4;
+
+  /* Prevent wrapping */
+  white-space: nowrap;
 }
 
 .concept-review-credit {
@@ -1354,8 +1360,20 @@ a {
 .concept-review-logo {
   width: 13px;
   height: 13px;
-  object-fit: contain;
-  opacity: 0.58;
+
+  background-color: currentColor;
+
+  -webkit-mask-image: url("/blueprint-webstudio-logo.png");
+  mask-image: url("/blueprint-webstudio-logo.png");
+
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+
+  -webkit-mask-position: center;
+  mask-position: center;
+
+  -webkit-mask-size: contain;
+  mask-size: contain;
 }
 
 @media (max-width: 640px) {

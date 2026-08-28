@@ -729,11 +729,7 @@ function Review({ onQuote }) {
       </div>
 
       <div className="concept-review-credit">
-        <img
-          src="/blueprint-webstudio-logo.png"
-          alt=""
-          className="concept-review-logo"
-        />
+        <span className="concept-review-logo" aria-hidden="true" />
         <span>© Blueprint WebStudio</span>
       </div>
     </div>
