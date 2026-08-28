@@ -17,6 +17,7 @@ import { offers, services } from './data/siteData'
 const phoneDisplay = '(785) 842-3200'
 const phoneHref = 'tel:+17858423200'
 
+
 function SpadeLogo() {
   return (
     <svg
@@ -722,18 +723,121 @@ function QuoteModal({ open, onClose }) {
 }
 
 function Review({ onQuote }) {
+  const [expanded, setExpanded] = useState(true);
+
+  // Set the Partner Program offer expiration here.
+  // Format: YYYY-MM-DDTHH:MM:SS
+  const offerEndsAt = new Date("2026-09-04T23:59:59");
+
+  const calculateTimeLeft = () => {
+    const difference = offerEndsAt.getTime() - Date.now();
+
+    if (difference <= 0) {
+      return {
+        expired: true,
+        days: 0,
+        hours: 0,
+        minutes: 0,
+      };
+    }
+
+    return {
+      expired: false,
+      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+      hours: Math.floor(
+        (difference / (1000 * 60 * 60)) % 24
+      ),
+      minutes: Math.floor(
+        (difference / (1000 * 60)) % 60
+      ),
+    };
+  };
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 60000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <div className="concept-review-badge" aria-label="Concept review notice">
-      <div className="concept-review-title">
-        Concept Review · Not For Official Use
-      </div>
+    <aside
+      className={`concept-review-badge ${
+        expanded ? "is-expanded" : "is-collapsed"
+      }`}
+      aria-label="Private client preview"
+    >
+      <button
+        className="concept-review-toggle"
+        onClick={() => setExpanded((current) => !current)}
+        aria-expanded={expanded}
+        aria-label={
+          expanded
+            ? "Collapse private client preview"
+            : "Expand private client preview"
+        }
+      >
+        <span>Concept Review · Not For Official Use</span>
+
+        <span className="concept-review-chevron">
+          {expanded ? "−" : "+"}
+        </span>
+      </button>
+
+      {expanded && (
+        <div className="concept-review-content">
+          <div className="concept-review-private">
+            Private Client Preview
+          </div>
+
+          {!timeLeft.expired ? (
+            <>
+              <div className="concept-review-program">
+                Partner Program Eligibility
+              </div>
+
+              <div className="concept-review-reserved">
+                Reserved for
+              </div>
+
+              <div className="concept-review-time">
+                <span>
+                  <strong>{timeLeft.days}</strong> Days
+                </span>
+
+                <span className="concept-review-dot">·</span>
+
+                <span>
+                  <strong>{timeLeft.hours}</strong> Hours
+                </span>
+
+                <span className="concept-review-dot">·</span>
+
+                <span>
+                  <strong>{timeLeft.minutes}</strong> Minutes
+                </span>
+              </div>
+            </>
+          ) : (
+            <div className="concept-review-expired">
+              Partner Program offer expired
+            </div>
+          )}
+        </div>
+      )}
 
       <div className="concept-review-credit">
-        <span className="concept-review-logo" aria-hidden="true" />
+        <span
+          className="concept-review-logo"
+          aria-hidden="true"
+        />
         <span>© Blueprint WebStudio</span>
       </div>
-    </div>
-  )
+    </aside>
+  );
 }
 
 export default function App() {

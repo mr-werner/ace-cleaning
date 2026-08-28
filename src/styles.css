@@ -1311,58 +1311,175 @@ a {
   bottom: 20px;
   z-index: 9999;
 
-  padding: 10px 14px;
-
-  /* Allow the title to stay on one line */
-  width: max-content;
+  width: 370px;
   max-width: calc(100vw - 40px);
 
-  background: rgba(20, 20, 20, 0.82);
+  background: rgba(20, 20, 20, 0.88);
   border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 10px;
+  border-radius: 12px;
 
   color: rgba(255, 255, 255, 0.92);
 
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
 
-  pointer-events: none;
-  user-select: none;
+  overflow: hidden;
 }
 
-.concept-review-title {
+/* ------------------------------
+   TOP / COLLAPSE BUTTON
+------------------------------ */
+
+.concept-review-toggle {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  padding: 12px 15px;
+
+  border: 0;
+  background: transparent;
+
+  color: rgba(255, 255, 255, 0.92);
+
+  font: inherit;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  line-height: 1.4;
+  text-align: left;
 
-  /* Prevent wrapping */
-  white-space: nowrap;
+  cursor: pointer;
 }
 
+.concept-review-chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 20px;
+  height: 20px;
+
+  flex-shrink: 0;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+
+  color: rgba(255, 255, 255, 0.65);
+
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+/* ------------------------------
+   EXPANDED CONTENT
+------------------------------ */
+
+.concept-review-content {
+  margin: 0 15px;
+  padding: 16px 0 17px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.concept-review-private {
+  margin-bottom: 14px;
+
+  color: rgba(255, 255, 255, 0.52);
+
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.concept-review-program {
+  color: rgba(255, 255, 255, 0.96);
+
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.concept-review-reserved {
+  margin-top: 3px;
+
+  color: rgba(255, 255, 255, 0.5);
+
+  font-size: 11px;
+}
+
+/* ------------------------------
+   COUNTDOWN
+------------------------------ */
+
+.concept-review-time {
+  margin-top: 11px;
+
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+
+  white-space: nowrap;
+
+  color: rgba(255, 255, 255, 0.67);
+
+  font-size: 11px;
+  letter-spacing: 0.025em;
+}
+
+.concept-review-time strong {
+  margin-right: 2px;
+
+  color: rgba(255, 255, 255, 0.98);
+
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.concept-review-dot {
+  color: rgba(255, 255, 255, 0.28);
+}
+
+.concept-review-expired {
+  margin-top: 8px;
+
+  color: rgba(255, 255, 255, 0.72);
+
+  font-size: 12px;
+}
+
+/* ------------------------------
+   BLUEPRINT SIGNATURE
+------------------------------ */
 
 .concept-review-credit {
-  margin-top: 6px;
+  padding: 10px 15px 11px;
 
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 6px;
 
+  color: rgba(255, 255, 255, 0.58);
+
   font-size: 11px;
   font-weight: 400;
   letter-spacing: 0.04em;
-
-  color: rgba(255, 255, 255, 0.58);
 }
-
 
 .concept-review-logo {
   width: 14px;
   height: 14px;
+
+  flex-shrink: 0;
 
   background-color: currentColor;
 
@@ -1377,28 +1494,49 @@ a {
 
   -webkit-mask-size: contain;
   mask-size: contain;
-
-  flex-shrink: 0;
 }
+
+/* ------------------------------
+   MOBILE
+------------------------------ */
 
 @media (max-width: 640px) {
   .concept-review-badge {
     right: 12px;
     bottom: 12px;
-    padding: 8px 11px;
-    max-width: calc(100vw - 24px);
+
+    width: calc(100vw - 24px);
+    max-width: 370px;
   }
 
-  .concept-review-title {
+  .concept-review-toggle {
+    padding: 10px 12px;
+
     font-size: 9px;
+  }
+
+  .concept-review-content {
+    margin: 0 12px;
+    padding: 13px 0 14px;
   }
 
   .concept-review-credit {
-    font-size: 9px;
+    padding: 9px 12px 10px;
+
+    font-size: 10px;
+  }
+
+  .concept-review-time {
+    gap: 5px;
+    font-size: 10px;
+  }
+
+  .concept-review-time strong {
+    font-size: 15px;
   }
 
   .concept-review-logo {
-    width: 11px;
-    height: 11px;
+    width: 12px;
+    height: 12px;
   }
 }
