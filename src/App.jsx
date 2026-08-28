@@ -727,11 +727,14 @@ function Review({ onQuote }) {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
-  const offerEndsAt = new Date("2026-09-04T23:59:59");
-
-  const prospectName = "ACE Steam Clean";
+  const previewConfig = {
+    prospect: "ACE Steam Clean",
+    source: "ace",
+    offerEndsAt: "2026-09-04T23:59:59-06:00",
+  };
 
   const calculateTimeLeft = () => {
+    const offerEndsAt = new Date(previewConfig.offerEndsAt);
     const difference = offerEndsAt.getTime() - Date.now();
 
     if (difference <= 0) {
@@ -769,29 +772,31 @@ function Review({ onQuote }) {
     try {
       setSubmitting(true);
 
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: prospectName,
-          companyName: prospectName,
-          email: "Concept Preview",
-          phone: "Concept Preview",
-          companyType: "Prospective Client",
-          budget: "Partner Program",
-          message: `${prospectName} clicked "I'm Interested" on their private Blueprint WebStudio concept preview.`,
-        }),
-      });
+      const response = await fetch(
+        "https://blueprintwebstudio.com/api/demo-interest",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+
+          body: JSON.stringify({
+            prospect: previewConfig.prospect,
+            source: previewConfig.source,
+            action: "Partner Program Interest",
+            page: window.location.href,
+          }),
+        }
+      );
 
       if (!response.ok) {
-        throw new Error("Unable to submit interest.");
+        throw new Error("Unable to submit interest");
       }
 
       setSubmitted(true);
     } catch (error) {
       console.error(error);
+
       alert(
         "Something went wrong. Please contact Blueprint WebStudio directly."
       );
@@ -802,8 +807,9 @@ function Review({ onQuote }) {
 
   return (
     <aside
-      className={`concept-review-badge ${expanded ? "is-expanded" : "is-collapsed"
-        }`}
+      className={`concept-review-badge ${
+        expanded ? "is-expanded" : "is-collapsed"
+      }`}
       aria-label="Private client preview"
     >
       <button
@@ -858,9 +864,7 @@ function Review({ onQuote }) {
                   onClick={handleInterest}
                   disabled={submitting}
                 >
-                  {submitting
-                    ? "Sending..."
-                    : "I'm Interested"}
+                  {submitting ? "Sending..." : "I'm Interested"}
                 </button>
               ) : (
                 <div className="concept-review-success">
@@ -875,7 +879,7 @@ function Review({ onQuote }) {
           )}
 
           <div className="concept-review-contact">
-            <a href="tel:+1XXXXXXXXXX">
+            <a href="tel:+17205156647">
               Call
             </a>
 
