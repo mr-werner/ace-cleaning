@@ -773,7 +773,7 @@ function Review({ onQuote }) {
       setSubmitting(true);
 
       const response = await fetch(
-        "blueprintwebstudio.com/api/demo-interest",
+        "https://www.blueprintwebstudio.com/api/demo-interest",
         {
           method: "POST",
           headers: {
