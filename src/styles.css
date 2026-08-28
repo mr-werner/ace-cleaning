@@ -1343,23 +1343,26 @@ a {
   white-space: nowrap;
 }
 
+
 .concept-review-credit {
-  margin-top: 5px;
+  margin-top: 6px;
 
   display: flex;
   align-items: center;
-  gap: 5px;
+  justify-content: flex-end;
+  gap: 6px;
 
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 400;
   letter-spacing: 0.04em;
 
   color: rgba(255, 255, 255, 0.58);
 }
 
-.concept-review-logo {
-  width: 13px;
-  height: 13px;
+
+..concept-review-logo {
+  width: 14px;
+  height: 14px;
 
   background-color: currentColor;
 
@@ -1374,6 +1377,8 @@ a {
 
   -webkit-mask-size: contain;
   mask-size: contain;
+
+  flex-shrink: 0;
 }
 
 @media (max-width: 640px) {
