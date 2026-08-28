@@ -1540,3 +1540,78 @@ a {
     height: 12px;
   }
 }
+
+.concept-review-accept {
+  width: 100%;
+  margin-top: 16px;
+  padding: 11px 14px;
+
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 7px;
+
+  background: rgba(255, 255, 255, 0.94);
+
+  color: #191919;
+
+  font: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.concept-review-accept:hover {
+  background: #ffffff;
+  transform: translateY(-1px);
+}
+
+.concept-review-accept:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.concept-review-success {
+  margin-top: 16px;
+  padding: 10px 12px;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 7px;
+
+  background: rgba(255, 255, 255, 0.06);
+
+  color: rgba(255, 255, 255, 0.82);
+
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.concept-review-contact {
+  margin-top: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  color: rgba(255, 255, 255, 0.35);
+
+  font-size: 10px;
+  letter-spacing: 0.04em;
+}
+
+.concept-review-contact a {
+  color: rgba(255, 255, 255, 0.66);
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+}
+
+.concept-review-contact a:hover {
+  color: rgba(255, 255, 255, 0.96);
+}

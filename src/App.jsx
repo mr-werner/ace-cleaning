@@ -724,10 +724,12 @@ function QuoteModal({ open, onClose }) {
 
 function Review({ onQuote }) {
   const [expanded, setExpanded] = useState(true);
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
-  // Set the Partner Program offer expiration here.
-  // Format: YYYY-MM-DDTHH:MM:SS
   const offerEndsAt = new Date("2026-09-04T23:59:59");
+
+  const prospectName = "ACE Steam Clean";
 
   const calculateTimeLeft = () => {
     const difference = offerEndsAt.getTime() - Date.now();
@@ -763,22 +765,51 @@ function Review({ onQuote }) {
     return () => clearInterval(timer);
   }, []);
 
+  const handleInterest = async () => {
+    try {
+      setSubmitting(true);
+
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: prospectName,
+          companyName: prospectName,
+          email: "Concept Preview",
+          phone: "Concept Preview",
+          companyType: "Prospective Client",
+          budget: "Partner Program",
+          message: `${prospectName} clicked "I'm Interested" on their private Blueprint WebStudio concept preview.`,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Unable to submit interest.");
+      }
+
+      setSubmitted(true);
+    } catch (error) {
+      console.error(error);
+      alert(
+        "Something went wrong. Please contact Blueprint WebStudio directly."
+      );
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <aside
-      className={`concept-review-badge ${
-        expanded ? "is-expanded" : "is-collapsed"
-      }`}
+      className={`concept-review-badge ${expanded ? "is-expanded" : "is-collapsed"
+        }`}
       aria-label="Private client preview"
     >
       <button
         className="concept-review-toggle"
         onClick={() => setExpanded((current) => !current)}
         aria-expanded={expanded}
-        aria-label={
-          expanded
-            ? "Collapse private client preview"
-            : "Expand private client preview"
-        }
       >
         <span>Concept Review · Not For Official Use</span>
 
@@ -820,12 +851,50 @@ function Review({ onQuote }) {
                   <strong>{timeLeft.minutes}</strong> Minutes
                 </span>
               </div>
+
+              {!submitted ? (
+                <button
+                  className="concept-review-accept"
+                  onClick={handleInterest}
+                  disabled={submitting}
+                >
+                  {submitting
+                    ? "Sending..."
+                    : "I'm Interested"}
+                </button>
+              ) : (
+                <div className="concept-review-success">
+                  Thank you — Blueprint WebStudio has been notified.
+                </div>
+              )}
             </>
           ) : (
             <div className="concept-review-expired">
               Partner Program offer expired
             </div>
           )}
+
+          <div className="concept-review-contact">
+            <a href="tel:+1XXXXXXXXXX">
+              Call
+            </a>
+
+            <span>·</span>
+
+            <a href="mailto:hello@blueprintwebstudio.com">
+              Email
+            </a>
+
+            <span>·</span>
+
+            <a
+              href="https://blueprintwebstudio.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Website
+            </a>
+          </div>
         </div>
       )}
 
