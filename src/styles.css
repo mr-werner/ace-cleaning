@@ -1304,3 +1304,25 @@ a {
   font-size: 13px;
   font-weight: 700;
 }
+
+.concept-review-credit {
+  margin-top: 5px;
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+
+  color: rgba(255, 255, 255, 0.58);
+}
+
+.concept-review-logo {
+  width: 13px;
+  height: 13px;
+  object-fit: contain;
+
+  opacity: 0.58;
+}
