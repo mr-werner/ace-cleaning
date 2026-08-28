@@ -721,6 +721,25 @@ function QuoteModal({ open, onClose }) {
   )
 }
 
+function Review({ onQuote }) {
+  return (
+    <div className="concept-review-badge" aria-label="Concept review notice">
+      <div className="concept-review-title">
+        Concept Review · Not For Official Use
+      </div>
+
+      <div className="concept-review-credit">
+        <img
+          src="/blueprint-webstudio-logo.png"
+          alt=""
+          className="concept-review-logo"
+        />
+        <span>© Blueprint WebStudio</span>
+      </div>
+    </div>
+  )
+}
+
 export default function App() {
   const [quoteOpen, setQuoteOpen] = useState(false)
   return (
@@ -734,6 +753,7 @@ export default function App() {
       <Reviews />
       <ServiceArea />
       <Footer onQuote={() => setQuoteOpen(true)} />
+      <Review onQuote={() => setQuoteOpen(true)} />
       <QuoteModal open={quoteOpen} onClose={() => setQuoteOpen(false)} />
     </>
   )
