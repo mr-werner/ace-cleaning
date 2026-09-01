@@ -824,7 +824,7 @@ function Review() {
       setError("");
 
       const response = await fetch(
-        "https://blueprintwebstudio.com/api/demo-interest",
+        "https://www.blueprintwebstudio.com/api/demo-interest",
         {
           method: "POST",
           headers: {
